@@ -2,11 +2,11 @@ FROM hikarushindo/alpine:3.5
 
 MAINTAINER Pascal Nitsche
 
-ENV GPG_KEYS="0BD78B5F97500D450838F95DFE857D9A90D90EC1 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3"
+ENV GPG_KEYS="528995BFEDFBA7191D46839EF9BA0ADA31CBD89E"
 
-ENV PHP_VERSION="5.6.29"
+ENV PHP_VERSION="7.1.1"
 ENV PHP_URL="https://secure.php.net/get/php-$PHP_VERSION.tar.xz/from/this/mirror" PHP_ASC_URL="https://secure.php.net/get/php-$PHP_VERSION.tar.xz.asc/from/this/mirror"
-ENV PHP_SHA256="0ff352a433f73e2c82b0d5b283b600402518569bf72a74e247f356dacbf322a7" PHP_MD5="190bf5b52d1fc68d5500a8cdc7e33164"
+ENV PHP_SHA256="b3565b0c1441064eba204821608df1ec7367abff881286898d900c2c2a5ffe70" PHP_MD5="65eef256f6e7104a05361939f5e23ada"
 ENV PHP_INI_DIR="/usr/local/etc/php"
 ENV PHP_EXTRA_CONFIGURE_ARGS="--enable-fpm --with-fpm-user=www-data --with-fpm-group=www-data"
 
@@ -15,9 +15,7 @@ ENV ADDITIONAL_PACKAGES \
 
 ENV PHP_PECL_EXTENSIONS \
     imagick \
-    apcu-4.0.11 \
-    uploadprogress \
-    twig/CTwig
+    apcu
 
 ENV PHP_ENABLE_EXTENSIONS \
     apcu \
@@ -29,14 +27,11 @@ ENV PHP_ENABLE_EXTENSIONS \
     ldap \
     mcrypt \
     mysqli \
-    mysql \
     pdo_mysql \
     pdo_pgsql \
     pgsql \
     pspell \
     tidy \
-    twig \
-    uploadprogress \
     xmlrpc \
     xsl
 
@@ -161,7 +156,6 @@ RUN set -xe; \
     --with-ldap=shared \
     --with-mcrypt=shared \
     --with-mysqli=shared \
-    --with-mysql=shared \
     --with-opcache=shared \
     --with-pdo_mysql=shared \
     --with-pdo_pgsql=shared \
